@@ -79,16 +79,19 @@
 
     /* Button to Open Sidebar */
     .open-btn {
-      background-color: #ff9900;
+      background-color: transparent;
       color: white;
-      font-size: 16px;
-      padding: 10px 15px;
+      font-size: 24px;
       border: none;
       cursor: pointer;
       position: fixed;
       top: 10px;
       left: 10px;
       z-index: 1001;
+    }
+
+    .open-btn.hidden {
+      display: none;
     }
 
     /* Header */
@@ -114,6 +117,10 @@
       color: white;
       text-decoration: none;
       font-size: 14px;
+    }
+
+    header .nav-links .profile-icon {
+      font-size: 20px;
     }
 
     /* Slideshow */
@@ -179,8 +186,7 @@
       }
 
       .open-btn {
-        font-size: 14px;
-        padding: 8px 12px;
+        font-size: 20px;
       }
 
       header .logo img {
@@ -207,7 +213,7 @@
   </aside>
 
   <!-- Button to Open Sidebar -->
-  <button class="open-btn" onclick="toggleSidebar()">☰</button>
+  <button class="open-btn" id="openBtn" onclick="toggleSidebar()">☰</button>
 
   <!-- Main Content -->
   <main>
@@ -221,20 +227,20 @@
         <a href="#">Shop</a>
         <a href="#">Deals</a>
         <a href="#">Contact</a>
-        <a href="#">Profile</a>
+        <span class="profile-icon">👤</span>
       </div>
     </header>
 
     <!-- Slideshow Section -->
     <section class="slideshow" id="slideshow">
       <div class="slide active">
-        <img src="slide1.jpg" alt="Slide 1">
+        <img src="C:\Users\SFA\OneDrive\Desktop\snapshiksha\banner.jpg" alt="Slide 1">
       </div>
       <div class="slide">
-        <img src="slide2.jpg" alt="Slide 2">
+        <img src="C:\Users\SFA\OneDrive\Desktop\snapshiksha\snapshikshawritten.jpg" alt="Slide 2">
       </div>
       <div class="slide">
-        <img src="slide3.jpg" alt="Slide 3">
+        <img src="C:\Users\SFA\OneDrive\Desktop\snapshiksha\study-book.gif" alt="Slide 3">
       </div>
     </section>
 
@@ -257,7 +263,17 @@
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
+      const openBtn = document.getElementById("openBtn");
+
+      // Toggle sidebar visibility
       sidebar.classList.toggle("open");
+
+      // Show/hide the sidebar button
+      if (sidebar.classList.contains("open")) {
+        openBtn.classList.add("hidden");
+      } else {
+        openBtn.classList.remove("hidden");
+      }
     }
 
     // Slideshow functionality
